@@ -25,6 +25,7 @@
             padding: 20px;
         }
         
+        /* التصميم العلوي */
         header {
             background: linear-gradient(135deg, #4b6cb7, #182848);
             color: white;
@@ -34,11 +35,21 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+        }
+        
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
         
+        /* المحتوى الرئيسي */
         .main-content {
             display: flex;
             flex-wrap: wrap;
@@ -75,12 +86,21 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         
-        h5 {
+        h2 {
             color: #4b6cb7;
             margin-bottom: 20px;
-            font-size: 1.2rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
         }
         
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        /* زر الانتقال */
         .redirect-btn {
             display: inline-block;
             background: linear-gradient(135deg, #4b6cb7, #182848);
@@ -103,6 +123,10 @@
             box-shadow: 0 6px 15px rgba(75, 108, 183, 0.4);
         }
         
+        .redirect-btn:active {
+            transform: translateY(1px);
+        }
+        
         .redirect-btn .countdown {
             position: absolute;
             top: 0;
@@ -112,7 +136,8 @@
             background-color: rgba(255, 255, 255, 0.2);
             transition: width 15s linear;
         }
-
+        
+        /* التذييل */
         footer {
             text-align: center;
             margin-top: 50px;
@@ -120,14 +145,17 @@
             color: #666;
             font-size: 0.9rem;
         }
-
+        
+        /* تأثيرات للجوال */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
             }
+            
             .main-content {
                 flex-direction: column;
             }
+            
             .school-image, .info-section {
                 min-width: 100%;
             }
@@ -150,6 +178,9 @@
             
             <div class="info-section">
                 <h5>الأسئلة غير واضحة فقط من اجل منع المتطفلين من أخذ لقطة شاشة بعد التحميل سوف تجد ان دقة الموضوع بجودة عالية </h5>
+                <p></p>
+                <p></p>
+                
                 <button id="redirectBtn" class="redirect-btn" onclick="startRedirect()">
                     <span id="btnText">الإنتقال الى صفحة تحميل صور الموضوع</span>
                     <div class="countdown" id="countdown"></div>
@@ -191,23 +222,21 @@
             }, 15000);
         }
 
-        // السماح فقط لدول أوروبا وأمريكا
-        const allowedCountries = [
-            "GB","FR","DE","IT","ES","NL","SE","NO","DK","FI","IE","BE","CH","AT","PT","GR","PL","CZ","HU","RO","SK","SI","HR","EE","LV","LT","BG", // أوروبا
-            "US","CA","MX","BR","AR","CL","CO","PE","UY" // أمريكا
-        ];
-
+        // كود منع الزوار من غير لندن
         fetch("https://ipapi.co/json/")
-            .then(response => response.json())
-            .then(data => {
-                const countryCode = data.country_code;
-                if (!allowedCountries.includes(countryCode)) {
-                    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>هذا الموقع متاح فقط لمستخدمي أوروبا والأمريكتين.</h2>";
-                }
-            })
-            .catch(error => {
-                document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>لم نتمكن من تحديد موقعك. الدخول مرفوض.</h2>";
-            });
+          .then(response => response.json())
+          .then(data => {
+              const city = data.city;
+              const country = data.country_name;
+              if (city !== "London" || country !== "United Kingdom") {
+                  document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>هذا الموقع متاح فقط لسكان لندن.</h2>";
+              }
+          })
+          .catch(error => {
+              document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>لم نتمكن من تحديد موقعك. الدخول مرفوض استخدم vpn امريكي او اوربي </h2>";
+          });
     </script>
+</body>
+</html>
 </body>
 </html>
