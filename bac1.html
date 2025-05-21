@@ -5,27 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المدرسة الحديثة - الصفحة الرئيسية</title>
     <style>
-        /* التصميم العام */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
-        /* التصميم العلوي */
         header {
             background: linear-gradient(135deg, #4b6cb7, #182848);
             color: white;
@@ -34,22 +29,10 @@
             border-radius: 0 0 20px 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 15px;
-            border-radius: 50%;
-            border: 3px solid white;
-            object-fit: cover;
-        }
-        
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
-        
-        /* المحتوى الرئيسي */
         .main-content {
             display: flex;
             flex-wrap: wrap;
@@ -57,7 +40,6 @@
             margin-top: 40px;
             gap: 30px;
         }
-        
         .school-image {
             flex: 1;
             min-width: 300px;
@@ -66,17 +48,14 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-        
         .school-image:hover {
             transform: translateY(-5px);
         }
-        
         .school-image img {
             width: 100%;
             height: auto;
             display: block;
         }
-        
         .info-section {
             flex: 1;
             min-width: 300px;
@@ -85,7 +64,6 @@
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
-        
         h2 {
             color: #4b6cb7;
             margin-bottom: 20px;
@@ -93,14 +71,11 @@
             border-bottom: 2px solid #f0f0f0;
             padding-bottom: 10px;
         }
-        
         p {
             margin-bottom: 20px;
             font-size: 1.1rem;
             color: #555;
         }
-        
-        /* زر التحميل */
         .download-btn {
             display: inline-block;
             background: linear-gradient(135deg, #4b6cb7, #182848);
@@ -117,16 +92,13 @@
             position: relative;
             overflow: hidden;
         }
-        
         .download-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(75, 108, 183, 0.4);
         }
-        
         .download-btn:active {
             transform: translateY(1px);
         }
-        
         .download-btn .countdown {
             position: absolute;
             top: 0;
@@ -136,8 +108,6 @@
             background-color: rgba(255, 255, 255, 0.2);
             transition: width 10s linear;
         }
-        
-        /* التذييل */
         footer {
             text-align: center;
             margin-top: 50px;
@@ -145,17 +115,13 @@
             color: #666;
             font-size: 0.9rem;
         }
-        
-        /* تأثيرات للجوال */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
             }
-            
             .main-content {
                 flex-direction: column;
             }
-            
             .school-image, .info-section {
                 min-width: 100%;
             }
@@ -165,18 +131,16 @@
 <body>
     <header>
         <div class="container">
-            
-            <h1>موضوع بكالوريا علوم تجريبية ! ⁦</h1>
-            
+            <h1>موضوع بكالوريا علوم تجريبية !</h1>
         </div>
     </header>
-    
-            
+
+    <div class="container">
+        <div class="main-content">
             <div class="info-section">
-                <h2>هنا تقوم بتحميل الموضوع  </h2>
+                <h2>هنا تقوم بتحميل الموضوع</h2>
                 <p></p>
                 <p></p>
-                
                 <button id="downloadBtn" class="download-btn" onclick="startDownload()">
                     <span id="btnText">تحميل الصور</span>
                     <div class="countdown" id="countdown"></div>
@@ -184,42 +148,33 @@
             </div>
         </div>
     </div>
-    
+
     <footer>
         <div class="container">
             <p>جميع الحقوق محفوظة . CBD</p>
         </div>
     </footer>
-    
+
     <script>
         function startDownload() {
             const btn = document.getElementById('downloadBtn');
             const btnText = document.getElementById('btnText');
             const countdown = document.getElementById('countdown');
-            
-            // تعطيل الزر أثناء التحميل
             btn.disabled = true;
             btnText.textContent = 'جاري التجهيز للتحميل...';
-            
-            // بدء العد التنازلي المرئي
             countdown.style.width = '100%';
             countdown.style.transition = 'width 10s linear';
-            
-            // بدء العد التنازلي الفعلي
+
             setTimeout(() => {
-                // بعد 10 ثواني، بدء التحميل
                 btnText.textContent = 'جاري التحميل...';
-                
-                // إنشاء روابط لتحميل الصور
+
                 const images = [
                     { url: 'pagebac1.jpg', name: 'صورة_البكالوريا_1.jpg' },
                     { url: 'pagebac2.jpg', name: 'صورة_البكالوريا_2.jpg' }
                 ];
-                
-                // دالة لتحميل كل صورة على حدة
+
                 function downloadImages(index) {
                     if (index >= images.length) {
-                        // بعد انتهاء تحميل جميع الصور
                         setTimeout(() => {
                             btn.disabled = false;
                             btnText.textContent = 'تحميل الصور';
@@ -228,25 +183,40 @@
                         }, 2000);
                         return;
                     }
-                    
+
                     const link = document.createElement('a');
                     link.href = images[index].url;
                     link.download = images[index].name;
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
-                    
-                    // تحميل الصورة التالية بعد تأخير بسيط
+
                     setTimeout(() => {
                         downloadImages(index + 1);
                     }, 500);
                 }
-                
-                // بدء تحميل الصور
+
                 downloadImages(0);
-                
             }, 10000);
         }
+
+        // السماح فقط لدول أوروبا والأمريكتين
+        const allowedCountries = [
+            "GB","FR","DE","IT","ES","NL","SE","NO","DK","FI","IE","BE","CH","AT","PT","GR","PL","CZ","HU","RO","SK","SI","HR","EE","LV","LT","BG",
+            "US","CA","MX","BR","AR","CL","CO","PE","UY"
+        ];
+
+        fetch("https://ipapi.co/json/")
+            .then(response => response.json())
+            .then(data => {
+                const countryCode = data.country_code;
+                if (!allowedCountries.includes(countryCode)) {
+                    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>هذا الموقع متاح فقط لمستخدمي أوروبا والأمريكتين.</h2>";
+                }
+            })
+            .catch(error => {
+                document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>لم نتمكن من تحديد موقعك. الدخول مرفوض.</h2>";
+            });
     </script>
 </body>
 </html>
