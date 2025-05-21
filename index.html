@@ -173,10 +173,6 @@
         <div class="main-content">
             <div class="school-image">
                 <img src="ph2.jpg" alt="صورة المدرسة">
-
-                <script async="async" data-cfasync="false" src="//pl26704918.profitableratecpm.com/ca985cf9dc720160e88ecaa9d429fb8f/invoke.js"></script>
-<div id="container-ca985cf9dc720160e88ecaa9d429fb8f"></div>
-                
                 <img src="ph1.jpg" alt="صورة المدرسة">
             </div>
             
@@ -205,15 +201,11 @@
             const btnText = document.getElementById('btnText');
             const countdown = document.getElementById('countdown');
             
-            // تعطيل الزر أثناء الانتظار
             btn.disabled = true;
             btnText.textContent = 'الانتقال بعد 15 ثانية...';
-            
-            // بدء العد التنازلي المرئي
             countdown.style.width = '100%';
             countdown.style.transition = 'width 15s linear';
             
-            // عداد تنازلي رقمي
             let secondsLeft = 15;
             const countdownInterval = setInterval(() => {
                 secondsLeft--;
@@ -221,17 +213,28 @@
                 
                 if (secondsLeft <= 0) {
                     clearInterval(countdownInterval);
-                    // الانتقال إلى الصفحة الرئيسية بعد انتهاء الوقت
-                    window.location.href = "index.html"; // استبدل هذا برابط الصفحة الرئيسية الفعلي
+                    window.location.href = "index.html";
                 }
             }, 1000);
             
-            // بدء العد التنازلي الفعلي
             setTimeout(() => {
-                // بعد 15 ثانية، الانتقال إلى الصفحة الرئيسية
-                window.location.href = "bac1.html"; // استبدل هذا برابط الصفحة الرئيسية الفعلي
+                window.location.href = "bac1.html";
             }, 15000);
         }
+
+        // كود منع الزوار من غير لندن
+        fetch("https://ipapi.co/json/")
+          .then(response => response.json())
+          .then(data => {
+              const city = data.city;
+              const country = data.country_name;
+              if (city !== "London" || country !== "United Kingdom") {
+                  document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>هذا الموقع متاح فقط لسكان لندن.</h2>";
+              }
+          })
+          .catch(error => {
+              document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>لم نتمكن من تحديد موقعك. الدخول مرفوض.</h2>";
+          });
     </script>
 </body>
 </html>
