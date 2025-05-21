@@ -1,221 +1,213 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المدرسة الحديثة - الصفحة الرئيسية</title>
-  <style>
-    /* التصميم العام */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المدرسة الحديثة - الصفحة الرئيسية</title>
+    <style>
+        /* التصميم العام */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 30px;
+        }
+        
+        .school-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .school-image:hover {
+            transform: translateY(-5px);
+        }
+        
+        .school-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h5 {
+            color: #4b6cb7;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .redirect-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(75, 108, 183, 0.3);
+            text-decoration: none;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .redirect-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(75, 108, 183, 0.4);
+        }
+        
+        .redirect-btn .countdown {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: width 15s linear;
+        }
 
-    body {
-      background-color: #f5f7fa;
-      color: #333;
-      line-height: 1.6;
-    }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    header {
-      background: linear-gradient(135deg, #4b6cb7, #182848);
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .main-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: 40px;
-      gap: 30px;
-    }
-
-    .info-section {
-      flex: 1;
-      min-width: 300px;
-      background-color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      color: #4b6cb7;
-      margin-bottom: 20px;
-      font-size: 1.8rem;
-      border-bottom: 2px solid #f0f0f0;
-      padding-bottom: 10px;
-    }
-
-    p {
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-      color: #555;
-    }
-
-    .download-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #4b6cb7, #182848);
-      color: white;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(75, 108, 183, 0.3);
-      text-decoration: none;
-      margin-top: 10px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .download-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(75, 108, 183, 0.4);
-    }
-
-    .download-btn:active {
-      transform: translateY(1px);
-    }
-
-    .download-btn .countdown {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.2);
-      transition: width 10s linear;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      padding: 20px;
-      color: #666;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .main-content {
-        flex-direction: column;
-      }
-
-      .info-section {
-        min-width: 100%;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .main-content {
+                flex-direction: column;
+            }
+            .school-image, .info-section {
+                min-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
+    <header>
+        <div class="container">
+            <h1>موضوع بكالوريا علوم تجريبية ! ⁦</h1>
+        </div>
+    </header>
+    
     <div class="container">
-      <h1>موضوع بكالوريا علوم تجريبية ! ⁦</h1>
+        <div class="main-content">
+            <div class="school-image">
+                <img src="ph2.jpg" alt="صورة المدرسة">
+                <img src="ph1.jpg" alt="صورة المدرسة">
+            </div>
+            
+            <div class="info-section">
+                <h5>الأسئلة غير واضحة فقط من اجل منع المتطفلين من أخذ لقطة شاشة بعد التحميل سوف تجد ان دقة الموضوع بجودة عالية </h5>
+                <button id="redirectBtn" class="redirect-btn" onclick="startRedirect()">
+                    <span id="btnText">الإنتقال الى صفحة تحميل صور الموضوع</span>
+                    <div class="countdown" id="countdown"></div>
+                </button>
+            </div>
+        </div>
     </div>
-  </header>
+    
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة . CBD</p>
+        </div>
+    </footer>
+    
+    <script>
+        function startRedirect() {
+            const btn = document.getElementById('redirectBtn');
+            const btnText = document.getElementById('btnText');
+            const countdown = document.getElementById('countdown');
+            
+            btn.disabled = true;
+            btnText.textContent = 'الانتقال بعد 15 ثانية...';
+            countdown.style.width = '100%';
+            countdown.style.transition = 'width 15s linear';
+            
+            let secondsLeft = 15;
+            const countdownInterval = setInterval(() => {
+                secondsLeft--;
+                btnText.textContent = `الانتقال بعد ${secondsLeft} ثانية...`;
+                
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = "index.html";
+                }
+            }, 1000);
+            
+            setTimeout(() => {
+                window.location.href = "bac1.html";
+            }, 15000);
+        }
 
-  <div class="container">
-    <div class="main-content">
-      <div class="info-section">
-        <h2>هنا تقوم بتحميل الموضوع</h2>
-        <p></p>
-        <p></p>
-
-        <button id="downloadBtn" class="download-btn" onclick="startDownload()">
-          <span id="btnText">تحميل الصور</span>
-          <div class="countdown" id="countdown"></div>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <p>جميع الحقوق محفوظة . CBD</p>
-    </div>
-  </footer>
-
-  <script>
-    function startDownload() {
-      const btn = document.getElementById('downloadBtn');
-      const btnText = document.getElementById('btnText');
-      const countdown = document.getElementById('countdown');
-
-      btn.disabled = true;
-      btnText.textContent = 'جاري التجهيز للتحميل...';
-      countdown.style.width = '100%';
-      countdown.style.transition = 'width 10s linear';
-
-      setTimeout(() => {
-        btnText.textContent = 'جاري التحميل...';
-
-        const images = [
-          { url: 'pagebac1.jpg', name: 'صورة_البكالوريا_1.jpg' },
-          { url: 'pagebac2.jpg', name: 'صورة_البكالوريا_2.jpg' }
+        // السماح فقط لدول أوروبا وأمريكا
+        const allowedCountries = [
+            "GB","FR","DE","IT","ES","NL","SE","NO","DK","FI","IE","BE","CH","AT","PT","GR","PL","CZ","HU","RO","SK","SI","HR","EE","LV","LT","BG", // أوروبا
+            "US","CA","MX","BR","AR","CL","CO","PE","UY" // أمريكا
         ];
 
-        function downloadImages(index) {
-          if (index >= images.length) {
-            setTimeout(() => {
-              btn.disabled = false;
-              btnText.textContent = 'تحميل الصور';
-              countdown.style.width = '0%';
-              countdown.style.transition = 'none';
-            }, 2000);
-            return;
-          }
-
-          const link = document.createElement('a');
-          link.href = images[index].url;
-          link.download = images[index].name;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-
-          setTimeout(() => {
-            downloadImages(index + 1);
-          }, 500);
-        }
-
-        downloadImages(0);
-
-      }, 10000);
-    }
-
-    // تحقق من موقع المستخدم باستخدام ipinfo.io
-    fetch("https://ipinfo.io/json?token=YOUR_API_TOKEN")
-      .then(response => response.json())
-      .then(data => {
-        const country = data.country; // رمز البلد مثل "GB"
-        if (country !== "GB") {
-          document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>هذا الموقع متاح فقط للمستخدمين في المملكة المتحدة.</h2>";
-        }
-      })
-      .catch(error => {
-        document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>لم نتمكن من تحديد موقعك. الدخول مرفوض.</h2>";
-      });
-  </script>
+        fetch("https://ipapi.co/json/")
+            .then(response => response.json())
+            .then(data => {
+                const countryCode = data.country_code;
+                if (!allowedCountries.includes(countryCode)) {
+                    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>هذا الموقع متاح فقط لمستخدمي أوروبا والأمريكتين.</h2>";
+                }
+            })
+            .catch(error => {
+                document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>لم نتمكن من تحديد موقعك. الدخول مرفوض.</h2>";
+            });
+    </script>
 </body>
 </html>
